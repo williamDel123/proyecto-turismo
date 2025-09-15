@@ -1,0 +1,48 @@
+{% extends "layout/app.njk" %}
+{% block title %}
+    {{ title }}
+{% endblock %}
+{% block content %}
+    <h1>Crear Cuenta</h1>
+    {% if errors and errors.length %}
+        <div class="alert">
+            <ul>
+                {% for e in errors %}
+                    <li>{{ e }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+
+    <form  method="post" action="/registro">
+    <fieldset>
+        <legend>Datos Personales</legend>
+        <label for="nombre">Nombre:
+            <input type="text" name="nombre" value="{{old.nombre or ''}}" required>
+        </label>
+          <label for="apellido">Apellido:
+            <input type="text" name="apellido" value="{{old.apellido or ''}}" required>
+        </label>
+          <label for="edad">Edad:
+            <input type="number" name="edad" value="{{old.edad or ''}}" min="0" max="120" required>
+        </label>
+          <label for="email">Email:
+            <input type="email" name="email" value="{{old.email or ''}}" required>
+        </label>
+    </fieldset>
+    <fieldset>
+        <legend>Datos de acceso</legend>
+          <label for="user">Nombre Usuario:
+            <input type="text" name="user" value="{{old.user or ''}}" minlength="3" maxlength="40"  required>
+        </label>
+          <label for="passwordhash">Contraseña:
+            <input type="password" name="passwordhash"  minlength="6" required>
+        </label>
+          <label for="confirmarpassword">Confirmar contraseña:
+            <input type="password" name="confirmarpassword" minlength="6"  required>
+        </label>
+    </fieldset>
+    <button type="submit">Registrarse</button>
+    </form>
+
+{% endblock %}

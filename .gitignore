@@ -1,2 +1,2 @@
-*.env # Ignora los archivos con la extensión env
-venv/ # Ignora los directorios y archivos que esten dentro de venv
+node_modules/
+.env
